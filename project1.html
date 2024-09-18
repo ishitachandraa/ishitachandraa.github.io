@@ -60,7 +60,7 @@
             font-size: 16px;
             text-decoration: none;
             color: #fff;
-            background-color: #ff746c; /* Blue background */
+            background-color: #ff746c;
             padding: 10px 20px;
             margin: 0 10px;
             border-radius: 5px;
@@ -72,18 +72,18 @@
             color: white !important;
         }
 
-
         /* Style for the sections */
         .section {
             padding: 15px;
             border: 1px solid #ddd;
             border-radius: 5px;
             margin-top: 20px;
+            margin-bottom: 50px;
         }
 
         .media-container {
             width: 100%;
-            max-width: 800px; /* Adjust the max-width as needed */
+            max-width: 800px;
             margin: 0 auto;
             display: flex;
             justify-content: center;
@@ -92,10 +92,35 @@
         .media-container img,
         .media-container iframe {
             width: 100%;
-            height: 500px; /* Adjust height as needed */
+            height: 500px;
             border: none;
         }
 
+        .circuit img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .concept-images,
+        .final-images {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .final-images {
+            justify-content: center; /* Center images horizontally */
+        }
+
+
+        .concept-images img {
+            width: 23%; /* Adjust as needed */
+            margin-bottom: 10px;
+        }
+        .final-images img {
+            width: auto; /* Allow the image width to adjust */
+            max-width: 30%; /* Adjust the size of images */
+            margin: 0 10px; /* Add some margin between images */
+        }
     </style>
 </head>
 <body>
@@ -104,19 +129,45 @@
         <a href="index.html" class="back-button"><< Back to Portfolio</a>
         <br>
         <h1>Project 1: The Mirror Of Erised</h1>
-        <p>The Mirror of Erised project is an interactive, Harry Potter-inspired artifact using an Arduino. A photoresistor detects when a lit-up wand is waved in front of the mirror, triggering the servo to open a hidden door. A stone/container with a secret message is then revealed. 
-            On lifting up the container, LEDs light up in the background giving a magical glow. This project blends sensors, light diffusion, and motor control to create a captivating and immersive experience.</p>
+        <p>The Mirror of Erised project is an interactive, Harry Potter-inspired artifact using an Arduino. The mirror is supposed to reveal your deepest desire. A photoresistor detects when a lit-up wand is waved in front of the mirror, triggering the servo to open a hidden door. A container with a secret message(your desire) is then presented.
+            On retrieving it, LEDs light up in the background giving a magical glow. This project blends sensors, light diffusion, and motor control to create a captivating and immersive experience.</p>
     </header>
 
     <!-- Navigation Links -->
     <section class="nav-buttons">
+        <a href="#concept-section">Concept Development</a>
+        <a href="#artifact-section">Final Artifact</a>
         <a href="#video-section">Video Demo</a> 
         <a href="#code-section">Code</a> 
         <a href="#circuit-section">Circuit</a>
-        
+    
+
     </section>
 
-    <section>
+    <!-- Concept Development Section -->
+    <section id="concept-section" class="section">
+        <h2>Concept Development</h2>
+        <div class="concept-images">
+            <img src="images/P1I1.JPG" alt="Concept Image 1">
+            <img src="images/P1I2.JPG" alt="Concept Image 2">
+            <img src="images/P1I3.JPG" alt="Concept Image 3">
+            <img src="images/P1I4.JPG" alt="Concept Image 4">
+            <br>
+        </div>
+    </section>
+
+    <!-- Final Artifact Section -->
+    <section id="artifact-section" class="section">
+        <h2>Final Artifact</h2>
+        <div class="final-images">
+            <img src="images/P1I5.JPG" alt="Final Artifact Image 1">
+            <img src="images/P1I6.JPG" alt="Final Artifact Image 2">
+            <img src="images/P1I7.JPG" alt="Final Artifact Image 3">
+        </div>
+    </section>
+
+    <!-- Video Demo -->
+    <section id="video-section">
         <h2>Video Demo</h2>
         <div class="media-container">
             <iframe src="https://www.youtube.com/embed/s9kJbRwXQQU" 
@@ -127,27 +178,10 @@
         </div>
     </section>
     
-    
-    
     <!-- Code Section -->
     <section id="code-section" class="section">
-        <h2>Arduino Code </h2>
-        <title>Arduino Project Code</title>
-    <style>
-        pre {
-            background-color: #f4f4f4;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            white-space: pre-wrap; /* Allows wrapping for long lines */
-            font-family: 'Courier New', Courier, monospace;
-        }
-    </style>
-</head>
-<body>
-
-
-<pre><code>
+        <h2>Arduino Code</h2>
+        <pre><code>
 #include &lt;Servo.h&gt;
 
 //initialize variables
@@ -220,26 +254,24 @@ void loop() {
         <h2>Circuit</h2>
         <div class="circuit">
             <h3>Circuit for Servo Triggered by Photoresistor</h3>
-            <img src="images/P1Circ1.png" alt="Circuit for Servo Triggered by Photoresistor" style="max-width: 100%; height: auto;">
+            <img src="images/P1Circ1.png" alt="Circuit for Servo Triggered by Photoresistor">
         </div>
         <br>
         <div class="circuit">
             <h3>LED Triggered by Buttons</h3>
-            <img src="images/P1Circ2.png" alt="LED Triggered by Buttons" style="max-width: 100%; height: auto;">
+            <img src="images/P1Circ2.png" alt="LED Triggered by Buttons">
         </div>
     </section>
 
-
-    <!-- Footer -->
-<footer>
-    <section id="references" class="section">
-        <h2>References</h2>
-        <p>Mirror of Erised Concept: Inspired by the Harry Potter series by J.K. Rowling.</p>
-        <p> <a href="https://youtu.be/rby75GsQXqU?si=vjqRBv7RWf_OjHyD" target="_blank">Arduino Lesson 4B: Photoresistor and Servo</a> by Dawn DuPriest</p>
-        <p> <a href="https://youtu.be/rby75GsQXqU?si=vjqRBv7RWf_OjHyD" target="_blank">Introduction To Arduino/Robotics + Electronics Projects: S1E8 - Intro to Servo Motors, Open a Box </a> by Barbabas Robotics</p>
-    </section>
-</footer>
-
+    <!-- References -->
+    <footer>
+        <section id="references" class="section">
+            <h2>References</h2>
+            <p>Mirror of Erised Concept: Inspired by the Harry Potter series by J.K. Rowling.</p>
+            <p><a href="https://youtu.be/rby75GsQXqU?si=vjqRBv7RWf_OjHyD" target="_blank">Arduino Lesson 4B: Photoresistor and Servo</a> by Dawn DuPriest</p>
+            <p><a href="https://youtu.be/rby75GsQXqU?si=vjqRBv7RWf_OjHyD" target="_blank">Introduction To Arduino/Robotics + Electronics Projects: S1E8 - Intro to Servo Motors, Open a Box</a> by Barbabas Robotics</p>
+        </section>
+    </footer>
 
     <!-- Scripts (optional) -->
     <script src="assets/js/jquery.min.js"></script>
