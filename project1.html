@@ -1,0 +1,248 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Project 1 - Ishita Chandra Portfolio</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+        body {
+            margin: 20px;
+        }
+
+        header {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        h1 {
+            margin-top: 40px;
+            font-size: 28px;
+        }
+
+        section {
+            margin: 20px 20px;
+        }
+
+        footer {
+            margin-top: 50px;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 14px;
+            text-decoration: none;
+            color: #333;
+            border: 1px solid #333;
+            padding: 3px 8px;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        
+        .back-button:hover {
+            background-color: #ff746c;
+            color: #fff !important;
+        }
+
+        .nav-buttons {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .nav-buttons a {
+            display: inline-block;
+            font-size: 16px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #ff746c; /* Blue background */
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-buttons a:hover {
+            background-color: #ff6057; 
+            color: white !important;
+        }
+
+
+        /* Style for the sections */
+        .section {
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .video-container {
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    }
+
+    .video-container video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Ensures video covers the container */
+    }
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="index.html" class="back-button"><< Back to Portfolio</a>
+        <br>
+        <h1>Project 1: The Mirror Of Erised</h1>
+        <p>The Mirror of Erised project is an interactive, Harry Potter-inspired artifact using an Arduino. A photoresistor detects when a lit-up wand is waved in front of the mirror, triggering the servo to open a hidden door. A stone/container with a secret message is then revealed. 
+            On lifting up the container, LEDs light up in the background giving a magical glow. This project blends sensors, light diffusion, and motor control to create a captivating and immersive experience.</p>
+    </header>
+
+    <!-- Navigation Links -->
+    <section class="nav-buttons">
+        <a href="#video-section">Video Demo</a> 
+        <a href="#code-section">Code</a> 
+        <a href="#circuit-section">Circuit</a>
+        
+    </section>
+
+    <section id="video-section" class="section">
+        <h2>Video Demo</h2>
+        <div class="video-container">
+            <video controls>
+                <source src="videos/P1Demo.MOV" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </section>
+    
+    
+    
+    <!-- Code Section -->
+    <section id="code-section" class="section">
+        <h2>Arduino Code </h2>
+        <title>Arduino Project Code</title>
+    <style>
+        pre {
+            background-color: #f4f4f4;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            white-space: pre-wrap; /* Allows wrapping for long lines */
+            font-family: 'Courier New', Courier, monospace;
+        }
+    </style>
+</head>
+<body>
+
+
+<pre><code>
+#include &lt;Servo.h&gt;
+
+//initialize variables
+int photo;
+int doorOpen = 0;
+Servo s;
+int btn;
+int lights = 0;
+
+void setup() {
+  s.attach(9);            // Attach servo to pin 9
+  Serial.begin(9600);
+  s.write(175);           // Initial door position (closed)
+
+  // Set LED pins as outputs
+  pinMode(10, OUTPUT);
+  pinMode(11, OUTPUT);
+  pinMode(12, OUTPUT);
+  pinMode(8, OUTPUT);
+
+  // Set button pin as input with pull-up
+  pinMode(4, INPUT_PULLUP);
+}
+
+void loop() {
+  photo = analogRead(A1);  // Read photoresistor
+  Serial.println(photo);
+
+  if (photo > 50) {        // Open door if light threshold is met
+    doorOpen = 1;
+  }
+
+  if (doorOpen == 1) {
+    s.write(55);           // Move servo to open door
+  }
+
+  btn = digitalRead(4);    // Check button state
+
+  if (btn == 0) {          // Turn on lights when button pressed
+    lights = 1;
+  }
+
+  if (lights == 1) {       // Light sequence loop
+    int i = 5;
+    while (i > 0) {
+      digitalWrite(10, HIGH);
+      delay(300);
+      digitalWrite(10, LOW);
+      delay(200);
+      digitalWrite(11, LOW);
+      delay(500);
+      digitalWrite(11, HIGH);
+      delay(100);
+      digitalWrite(12, HIGH);
+      delay(500);
+      digitalWrite(8, HIGH);
+      delay(300);
+      digitalWrite(8, LOW);
+      delay(200);
+      digitalWrite(12, LOW);
+      i--;
+    }
+  }
+}
+</code></pre>
+    </section>
+
+    <!-- Circuit Section -->
+    <section id="circuit-section" class="section">
+        <h2>Circuit</h2>
+        <div class="circuit">
+            <h3>Circuit for Servo Triggered by Photoresistor</h3>
+            <img src="images/P1Circ1.png" alt="Circuit for Servo Triggered by Photoresistor" style="max-width: 100%; height: auto;">
+        </div>
+        <br>
+        <div class="circuit">
+            <h3>LED Triggered by Buttons</h3>
+            <img src="images/P1Circ2.png" alt="LED Triggered by Buttons" style="max-width: 100%; height: auto;">
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+<footer>
+    <section id="references" class="section">
+        <h2>References</h2>
+        <p>Mirror of Erised Concept: Inspired by the Harry Potter series by J.K. Rowling.</p>
+        <p> <a href="https://youtu.be/rby75GsQXqU?si=vjqRBv7RWf_OjHyD" target="_blank">Arduino Lesson 4B: Photoresistor and Servo</a> by Dawn DuPriest</p>
+        <p> <a href="https://youtu.be/rby75GsQXqU?si=vjqRBv7RWf_OjHyD" target="_blank">Introduction To Arduino/Robotics + Electronics Projects: S1E8 - Intro to Servo Motors, Open a Box </a> by Barbabas Robotics</p>
+    </section>
+</footer>
+
+
+    <!-- Scripts (optional) -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
