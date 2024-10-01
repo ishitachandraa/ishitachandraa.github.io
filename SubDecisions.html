@@ -1,0 +1,304 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Portfolio - [Your Name]</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+        body {
+            margin: 20px;
+        }
+
+        header {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        h1 {
+            margin-top: 40px;
+            font-size: 28px;
+        }
+
+        section {
+            margin: 20px 20px;
+        }
+
+        footer {
+            margin-top: 50px;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 14px;
+            text-decoration: none;
+            color: #333;
+            border: 1px solid #333;
+            padding: 3px 8px;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        
+        .back-button:hover {
+            background-color: #ff746c;
+            color: #fff !important;
+        }
+
+        .nav-buttons {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .nav-buttons a {
+            display: inline-block;
+            font-size: 16px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #ff746c;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-buttons a:hover {
+            background-color: #ff6057; 
+            color: white !important;
+        }
+
+        /* Style for the sections */
+        .section {
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-top: 20px;
+            margin-bottom: 50px;
+        }
+
+        .carousel-container {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative; /* For positioning arrows */
+        }
+
+        .carousel-img {
+            width: 100%;
+            height: 500px; /* Increased height for more space */
+            object-fit: contain; /* Maintains aspect ratio and centers smaller images */
+            border-radius: 10px;
+        }
+
+        .carousel-description {
+            margin-top: 15px;
+            font-size: 16px;
+        }
+
+        .carousel-controls {
+            position: absolute;
+            top: 50%; /* Center vertically */
+            transform: translateY(-50%); /* Center vertically */
+            width: 100%;
+            display: flex;
+            justify-content: space-between; /* Space between arrows */
+        }
+
+        .carousel-controls button {
+    background: none !important; /* No background */
+    border: 2px solid white !important; /* White border */
+    padding: 0 !important; /* No padding */
+    cursor: pointer !important; /* Pointer on hover */
+}
+
+
+
+        .carousel-controls img {
+            width: 30px; /* Adjust the size of the arrow images */
+            height: auto;
+        }
+
+
+        .media-container {
+            width: 100%;
+            max-width: 800px;
+            height: 200%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+        }
+        .final-images {
+    display: flex; /* Use flexbox to arrange images side by side */
+    justify-content: center; /* Center the images */
+    gap: 10px; /* Optional: Add space between images */
+    max-width: 700px; /* Set a maximum width for the container */
+    margin: 0 auto; /* Center the container on the page */
+}
+
+.final-images img {
+    max-width: 120%; /* Ensure images fit within their container */
+    height: auto; /* Maintain aspect ratio */
+    flex: 1; /* Make images grow equally to fit the container */
+    width: 400px; /* Set a fixed width for images */
+}
+
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="index.html" class="back-button"><< Back to Portfolio</a>
+        <br>
+        <br>
+        <br>
+        <h2 style="margin-left: 26px;">Asim's Subconscious Decisions</h2>
+
+       
+    </header>
+
+    <!-- Navigation Links -->
+    <section class="nav-buttons">
+        
+        <a href="#concept-section">Concept Sketches</a>
+        <a href="#refined-section">Refined Sketches</a>
+        <a href="#video-section">Video Demo</a> 
+        <a href="#code-section">Source Code</a>
+    </section>
+
+    <!-- Overall Description Section -->
+    <section id="description-section" class="section">
+        <h2>Description</h2>
+        <p style="font-size: 18px; line-height: 1.6; margin: 20px 0;">"Asim's Subconscious Decisions" is an interactive narrative experience that invites users to explore the pivotal moments in Asim's life that ultimately guided him toward a career in computer science. Asim is a character caught in the tension between his own passions and the expectations of his parents, who are both successful lawyers. This internal conflict serves as the backdrop for four critical choices he faces, each reflecting his struggle to navigate between a predetermined path and his authentic interests.<br><br>
+
+            Through scenarios like selecting extracurricular courses, choosing between friends and personal projects, and weighing the excitement of a summer job against a resume-boosting opportunity, users are given the chance to step into Asim's shoes and make decisions that align with their values. The project emphasizes the importance of staying true to oneself, whether that leads to a conventional route or a more unconventional one.<br><br>
+            
+            By allowing users to diverge from Asim's path, the project not only highlights his personal journey but also encourages reflection on the broader themes of identity, ambition, and the courage to pursue one's passions despite external pressures. Ultimately, "Asim's Subconscious Decisions" is a testament to the power of choice and the diverse outcomes that arise from the crossroads we all face in life.
+            </p>
+        
+    </section>
+
+    <!-- Concept Sketches Section with Carousel -->
+    <section id="concept-section" class="section">
+        <h2>Concept Sketches</h2>
+        <p> 
+            In the design process, we aimed to explore various possibilities to effectively convey Asim's journey and the choices he faced. This involved experimenting with different visual representations and interactive elements to enhance user engagement. Here are the key aspects I explored while sketching:<br><br>
+            
+             <b>* Life Path Visualization:</b> Considered various representations of the life path, including a tree structure, timeline, progress bar and conversation with subconscious, each illustrating Asim's journey and crucial decision points.<br>
+        
+             <b>* Choice Representation: </b> Investigated different methods to display choices, such as side-split screen, choice visuals and text based replies, allowing users to deliberate their options effectively.<br>
+            
+             <b>* Button Design: </b> Experimented with various button designs, transitioning from half screen buttons to smaller icons, to even incorporating "next" and "confirm" functionalities to enhance user interaction.<br>
+        </p>
+        
+        <div class="carousel-container">
+            <!-- Image Carousel -->
+            <img id="carousel-image" class="carousel-img" src="images/SubDecisions/1.jpg" alt="Concept Sketch 1">
+            
+            <!-- Description -->
+            <div id="carousel-description" class="carousel-description">
+                The timeline is represented as a progress bar, and at each checkpoint, users are presented with two choices that move the narrative forward.            </div>
+
+            <!-- Carousel Controls -->
+            <div class="carousel-controls">
+                <button onclick="prevImage()" aria-label="Previous">
+                    <img src="images/SubDecisions/arrowLeft.png" alt="Previous">
+                </button>
+                <button onclick="nextImage()" aria-label="Next">
+                    <img src="images/SubDecisions/arrowRight.png" alt="Next">
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Refined Sketches Section -->
+    <section id="refined-section" class="section">
+        <h2>Refined Sketches</h2>
+        <div class="final-images">
+            <img src="images/SubDecisions/refined1.JPG" alt="Refined Sketch 1">
+            <img src="images/SubDecisions/refined2.JPG" alt="Refined Sketch 2">
+        </div>
+        <p>
+            <br>
+            
+After discussing our initial sketches, we decided to visualize our buttons as puzzle pieces that users ultimately add to a 'puzzle frame' of life. This symbolizes how each decision fits into their journey, whether typical or unconventional, reinforcing the idea that no choice is wrong or bad. At every prompt given by the narrator, users can choose from different pieces, with each piece representing a different choice. We also opted for a dark and calm background to reflect characteristics from Asim's personality.
+            <p>
+    </section>
+    
+
+    <!-- Video Demo Section -->
+    <section id="video-section" class="section">
+        <h2>Video Demo</h2>
+        <div class="media-container">
+            <iframe src="https://www.youtube.com/embed/7hvJnvxAqu4" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen
+                    style="width: 1000px; height: 600px;">
+            </iframe>
+        </div>
+        <br>
+        <p> For our final product, we designed an interactive experience where users are guided through four pivotal prompts, with each decision represented by a puzzle piece that fills out a life puzzle frame. Initially, we planned for the buttons to be shaped like puzzle pieces to signify how each choice fits into Asim's journey, whether conventional or unconventional, emphasizing that no decision is inherently wrong. However, implementing complex puzzle-shaped buttons turned out to be challenging, so we opted for simpler square-like pieces to maintain clarity and functionality.
+
+           <br> The design features a dark blue background that evokes calm and introspection, in line with Asim's personality. The imagery starts with serene landscapes like lakes and mountains, gradually transitioning into space and stars, symbolizing Asim's journey from grounded decisions to limitless possibilities. The lake represents his introspective moments, while the starry sky symbolizes the boundless potential he discovers as he follows his passions. Throughout the experience, a narrator, representing Asim's subconscious, guides users through each critical life choice.</p>
+
+    </section>
+    
+    
+
+    <!-- Source Code Section -->
+    <section id="code-section" class="section">
+        <h2>Source Code</h2>
+        <p> This is the link to our Github Repository. <br>
+            <a href="https://github.com/Andrew-Musa/CPSC581" target="_blank">Github</a></p>
+    </section>
+
+    <!-- Footer --> 
+    <footer>
+        <section id="references" class="section">
+            <h2>Team Members </h2>
+            <p><b>Ishita Chandra, Andrew Musa and Asim Syed<br></b>
+                Each member contributed their best ideas and adapted them based on our collective input. We collaborated closely throughout the process—ideating, planning, sketching, and implementing. Together, we made key design decisions, including the color palette, narrator voice, background transitions, decision prompts and overall aesthetic. Ultimately, we were able to transform an abstract idea into a fully functioning web app.</p>
+        </section>
+    </footer>
+
+    <!-- JavaScript for the Carousel -->
+    <script>
+        const images = [
+            { src: "images/SubDecisions/1.jpg", description: "The timeline is represented as a progress bar, and at each checkpoint, users are presented with two choices that move the narrative forward." },
+            { src: "images/SubDecisions/2.jpg", description: "The life path is depicted as a branching tree, where each decision point is a branch. Users can toggle between choices using a switch button and confirm their selection when ready" },
+            { src: "images/SubDecisions/3.jpg", description: "Different choice icons are scattered throughout the scene, and a wand with dual-button functionality (similar to 'magnetism on' and 'magnetism off') allows users to transfer these choices to a designated holder." },
+            { src: "images/SubDecisions/4.jpg", description: "The screen displays a chat window between the user and their subconscious, allowing users to respond to prompts about choices with their selected replies." },
+            { src: "images/SubDecisions/5.jpg", description: "An incomplete image with a blank space is presented, and users can choose which option to fill in the blank." },
+            { src: "images/SubDecisions/6.jpg", description: "The screen is split into two distinct illustrations representing different choices, allowing users to click on the side they prefer." },
+            { src: "images/SubDecisions/7.jpg", description: "The screen is diagonally split, featuring a prompt in the center that guides users to choose between the two options on either side." },
+            { src: "images/SubDecisions/8.jpg", description: "The outro initially centers on the endpoint the user reaches, then gradually pans out to reveal various other possible endpoints, emphasizing that regardless of the choices made, the user would have accomplished something meaningful." },
+            { src: "images/SubDecisions/9.jpg", description: "The outro concludes with a complete image that incorporates all the icons and decisions made throughout the journey." },
+            { src: "images/SubDecisions/10.jpg", description: "The outro presents a timeline chronologically representing all the decisions made throughout the journey." }
+        ];
+
+        let currentImageIndex = 0;
+
+        function showImage(index) {
+            const image = images[index];
+            document.getElementById('carousel-image').src = image.src;
+            document.getElementById('carousel-description').textContent = image.description;
+        }
+
+        function prevImage() {
+            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+            showImage(currentImageIndex);
+        }
+
+        function nextImage() {
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            showImage(currentImageIndex);
+        }
+    </script>
+</body>
+</html>
