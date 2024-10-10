@@ -1,0 +1,334 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Aura Beat</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+        body {
+            margin: 20px;
+        }
+
+        header {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        h1 {
+            margin-top: 40px;
+            font-size: 28px;
+        }
+
+        section {
+            margin: 20px 20px;
+        }
+
+        footer {
+            margin-top: 50px;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 14px;
+            text-decoration: none;
+            color: #333;
+            border: 1px solid #333;
+            padding: 3px 8px;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        
+        .back-button:hover {
+            background-color: #ff746c;
+            color: #fff !important;
+        }
+
+        .nav-buttons {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .nav-buttons a {
+            display: inline-block;
+            font-size: 16px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #ff746c;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-buttons a:hover {
+            background-color: #ff6057; 
+            color: white !important;
+        }
+
+        /* Style for the sections */
+        .section {
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-top: 20px;
+            margin-bottom: 50px;
+        }
+
+        .media-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        .media-container img,
+        .media-container iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+        }
+
+        .circuit img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .concept-images,
+        .final-images {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .final-images {
+            justify-content: center; /* Center images horizontally */
+        }
+
+
+        .concept-images img {
+            width: 23%; /* Adjust as needed */
+            margin-bottom: 10px;
+        }
+        .final-images img {
+            width: auto; /* Allow the image width to adjust */
+            max-width: 30%; /* Adjust the size of images */
+            margin: 0 10px; /* Add some margin between images */
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="index.html" class="back-button"><< Back to Portfolio</a>
+        <br>
+        <h1>AuraBeat: Wear Your Sound</h1>
+        <p>AuraBeat is an interactive wearable that transforms your movements into music, creating a unique soundscape as you move. Equipped with accelerometers and a touch sensor, this jacket detects gestures and touch to trigger custom MIDI signals, turning your presence into an immersive audio experience.</p>
+    </header>
+
+    <!-- Navigation Links -->
+    <section class="nav-buttons">
+        <a href="#concept-section">Concept Development</a>
+        <a href="#artifact-section">Final Artifact</a>
+        <a href="#video-section">Video Demo</a> 
+        <a href="#code-section">Code</a> 
+        <a href="#circuit-section">Circuit</a>
+    
+
+    </section>
+
+    <!-- Concept Development Section -->
+    <section id="concept-section" class="section">
+        <h2>Concept Development</h2>
+        <div class="concept-images">
+            <img src="images/AuraBeat/c1.JPG" alt="Concept Image 1">
+            <img src="images/AuraBeat/c2.JPG" alt="Concept Image 2">
+            <img src="images/AuraBeat/c3.JPG" alt="Concept Image 3">
+            <br>
+        </div>
+    </section>
+
+    <!-- Final Artifact Section -->
+    <section id="artifact-section" class="section">
+        <h2>Final Artifact</h2>
+        <div class="final-images">
+            <img src="images/MirrorOfErised/P1I5.jpg" alt="Final Artifact Image 1">
+            <img src="images/MirrorOfErised/P1I6.jpg" alt="Final Artifact Image 2">
+            <img src="images/MirrorOfErised/P1I7.jpg" alt="Final Artifact Image 3">
+        </div>
+    </section>
+
+    <!-- Video Demo -->
+    <section id="video-section">
+        <h2>Video Demo</h2>
+        <div class="media-container">
+            <iframe src="https://www.youtube.com/embed/s9kJbRwXQQU" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+            </iframe>
+        </div>
+    </section>
+    
+    <!-- Code Section -->
+    <section id="code-section" class="section">
+        <h2>Arduino Code</h2>
+        <pre><code>
+                #include <Wire.h>                // For I2C communication
+                #include <MPU6050.h>             // MPU6050 accelerometer library
+                #include <Control_Surface.h>     // Include the Control Surface library
+                
+                // Create instances for two MPU6050 accelerometers
+                MPU6050 accel1(0x68); 
+                MPU6050 accel2(0x69); 
+                
+                // Set MIDI over USB
+                USBMIDI_Interface midi;
+                
+                // Variables for relative X calculation for accel1
+                float relativeX = 63.0;  
+                const float deltaFactor = 0.0005;  
+                const float correctionFactor = 0.99; 
+                
+                // Variables for flick detection
+                const int flickThreshold = 19000;  
+                bool flickDetected = false; 
+                
+                // Smoothing factor for low-pass filter for accel2
+                const float smoothingFactor = 0.1;
+                uint8_t smoothedValue = 0; 
+                
+                // Touch sensor pin configuration
+                const int touchPin = 15; 
+                bool touchPreviousState = false;
+                
+                // Function to initialize the accelerometers
+                void initAccel(MPU6050 &accel) {
+                  accel.initialize();
+                  if (!accel.testConnection()) {
+                    Serial.println("MPU6050 connection failed!");
+                    while (1);
+                  }
+                }
+                
+                // Function to read and map accelerometer data to MIDI range (0-127)
+                uint8_t readAndMapAccelerometer(MPU6050 &accel, char axis) {
+                  int accelValue = 0;
+                  switch (axis) {
+                    case 'x': accelValue = accel.getAccelerationX(); break;
+                    case 'y': accelValue = accel.getAccelerationY(); break;
+                    case 'z': accelValue = accel.getAccelerationZ(); break;
+                  }
+                  return (uint8_t)map(accelValue, -16384, 16384, 0, 127);
+                }
+                
+                // Function to update relative X value based on accumulated movement
+                void updateRelativeX(int16_t accelX) {
+                  float deltaX = accelX * deltaFactor;
+                  relativeX += deltaX;
+                  if (accelX > -1000 && accelX < 1000) relativeX *= correctionFactor;
+                  if (relativeX < 0) relativeX = 0;
+                  else if (relativeX > 127) relativeX = 127;
+                }
+                
+                // Function to detect flick gesture using accel2
+                void detectFlickGesture() {
+                  int16_t accel2Z = accel2.getAccelerationZ();  
+                  flickDetected = accel2Z > flickThreshold; 
+                }
+                
+                // Function to detect touch button press and release
+                void detectTouchButton() {
+                  bool currentState = digitalRead(touchPin); 
+                  if (currentState == HIGH && touchPreviousState == LOW) {
+                    midi.sendNoteOn(MIDIAddress(62, CHANNEL_4), 127); 
+                    Serial.println("Touch detected! Sending MIDI Note On");
+                  } 
+                  else if (currentState == LOW && touchPreviousState == HIGH) {
+                    midi.sendNoteOff(MIDIAddress(62, CHANNEL_4), 0); 
+                    Serial.println("Touch released! Sending MIDI Note Off");
+                  }
+                  touchPreviousState = currentState;
+                }
+                
+                void setup() {
+                  Wire.begin(); 
+                  Wire.setClock(400000);  // Set I2C clock speed to 400 kHz
+                  Serial.begin(115200);       
+                  
+                  // Initialize both accelerometers
+                  initAccel(accel1);          
+                  initAccel(accel2);          
+                
+                  // Initialize touch pin
+                  pinMode(touchPin, INPUT); 
+                
+                  // Initialize Control Surface MIDI over USB
+                  Control_Surface.begin();
+                  Serial.println("Setup complete");
+                }
+                
+                void loop() {
+                  detectFlickGesture();
+                  if (flickDetected) {
+                    midi.sendNoteOn(MIDIAddress(60, CHANNEL_3), 127); 
+                    //Serial.println("Flick detected! Sending MIDI Note On");
+                    delay(30);  
+                    midi.sendNoteOff(MIDIAddress(60, CHANNEL_3), 0);
+                    //Serial.println("Sending MIDI Note Off");
+                    delay(50);
+                  }
+                
+                  detectTouchButton();
+                
+                  int16_t rawAccel1X = accel1.getAccelerationX(); 
+                  uint8_t accel1Y = readAndMapAccelerometer(accel1, 'y'); 
+                
+                  updateRelativeX(rawAccel1X);
+                  uint8_t midiAccel1X = (uint8_t)relativeX;  
+                
+                  midi.sendControlChange(MIDIAddress(10, CHANNEL_1), midiAccel1X); 
+                  midi.sendControlChange(MIDIAddress(11, CHANNEL_2), accel1Y);    
+                
+                  Control_Surface.loop();
+                  delay(20); 
+                }
+                
+</code></pre>
+    </section>
+
+    <!-- Circuit Section -->
+    <section id="circuit-section" class="section">
+        <h2>Circuit</h2>
+        <div class="circuit">
+            <h3>Circuit for Servo Triggered by Photoresistor</h3>
+            <img src="images/MirrorOfErised/P1Circ1.png" alt="Circuit for Servo Triggered by Photoresistor">
+        </div>
+        <br>
+        <div class="circuit">
+            <h3>LED Triggered by Buttons</h3>
+            <img src="images/MirrorOfErised/P1Circ2.png" alt="LED Triggered by Buttons">
+        </div>
+    </section>
+
+    <!-- References -->
+    <footer>
+        <section id="references" class="section">
+            <h2>References</h2>
+            <p>Mirror of Erised Concept: Inspired by the Harry Potter series by J.K. Rowling.</p>
+            <p><a href="https://youtu.be/rby75GsQXqU?si=vjqRBv7RWf_OjHyD" target="_blank">Arduino Lesson 4B: Photoresistor and Servo</a> by Dawn DuPriest</p>
+            <p><a href="https://youtu.be/rby75GsQXqU?si=vjqRBv7RWf_OjHyD" target="_blank">Introduction To Arduino/Robotics + Electronics Projects: S1E8 - Intro to Servo Motors, Open a Box</a> by Barbabas Robotics</p>
+        </section>
+    </footer>
+
+    <!-- Scripts (optional) -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
