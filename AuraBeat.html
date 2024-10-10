@@ -161,6 +161,12 @@
             <img src="images/AuraBeat/p1.JPG" alt="Final Artifact Image 1">
             <img src="images/AuraBeat/p2.JPG" alt="Final Artifact Image 2">
         </div>
+        <p> <br>
+            <b>AuraBeat Jacket </b> is a wearable musical instrument designed to transform your movements into sound. Using two embedded MPU6050 accelerometers and a hidden capacitive touch sensor, this jacket converts hand gestures and flick motions into MIDI signals, allowing real-time control over sound parameters like cutoff frequency, brightness, or triggering beats in your favorite DAW (e.g., Ableton Live). One accelerometer tracks the relative movement of your left hand, letting you control the music, while the second, attached to a drumstick, detects flick gestures to trigger drum sounds. A hidden touch sensor by the shoulder can also by utilised to make cymbal sounds. 
+            <br>
+            <b>* Features: </b>Gesture-based control, MIDI integration, touch-activated triggers <br>
+            <b>* Technology:</b> Dual accelerometers, capacitive touch sensor, USB-MIDI interface<br>
+            <b>* Compatibility:</b> Works with major DAWs (Ableton Live, Logic Pro, etc.)</p>
     </section>
 
     <!-- Video Demo -->
@@ -179,9 +185,9 @@
     <section id="code-section" class="section">
         <h2>Arduino Code</h2>
         <pre><code>
-                #include <Wire.h>                // For I2C communication
-                #include <MPU6050.h>             // MPU6050 accelerometer library
-                #include <Control_Surface.h>     // Include the Control Surface library
+                #include &lt;Wire.h&gt;                // For I2C communication
+                #include &lt;MPU6050.h&gt;             // MPU6050 accelerometer library
+                #include &lt;Control_Surface.h&gt;     // Include the Control Surface library   
                 
                 // Create instances for two MPU6050 accelerometers
                 MPU6050 accel1(0x68); 
@@ -306,14 +312,9 @@
     <section id="circuit-section" class="section">
         <h2>Circuit</h2>
         <div class="circuit">
-            <h3>Circuit for Servo Triggered by Photoresistor</h3>
-            <img src="images/MirrorOfErised/P1Circ1.png" alt="Circuit for Servo Triggered by Photoresistor">
+            <img src="images/AuraBeat/circuit.jpeg" alt="Circuit">
         </div>
         <br>
-        <div class="circuit">
-            <h3>LED Triggered by Buttons</h3>
-            <img src="images/MirrorOfErised/P1Circ2.png" alt="LED Triggered by Buttons">
-        </div>
     </section>
 
     <!-- References -->
