@@ -1,0 +1,224 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Calyx</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+        body {
+            margin: 20px;
+        }
+
+        header {
+            margin-bottom: 30px; 
+            position: relative;
+        }
+
+        h1 {
+            margin-top: 40px;
+            font-size: 28px;
+        }
+
+        section {
+            margin: 20px 20px;
+        }
+
+        footer {
+            margin-top: 50px;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 14px;
+            text-decoration: none;
+            color: #333;
+            border: 1px solid #333;
+            padding: 3px 8px;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        
+        .back-button:hover {
+            background-color: #ff746c;
+            color: #fff !important;
+        }
+
+        .nav-buttons {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .nav-buttons a {
+            display: inline-block;
+            font-size: 16px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #ff746c;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-buttons a:hover {
+            background-color: #ff6057; 
+            color: white !important;
+        }
+
+        /* Style for the sections */
+        .section {
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-top: 20px;
+            margin-bottom: 50px;
+        }
+
+        .media-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        .media-container img,
+        .media-container iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+        }
+
+        .circuit img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .concept-images,
+        .final-images {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .final-images {
+            justify-content: center; /* Center images horizontally */
+        }
+
+
+        .concept-images img {
+            width: 23%; /* Adjust as needed */
+            margin-bottom: 10px;
+        }
+        .final-images img {
+            width: auto; /* Allow the image width to adjust */
+            max-width: 30%; /* Adjust the size of images */
+            margin: 0 10px; /* Add some margin between images */
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="index.html" class="back-button"><< Back to Portfolio</a>
+        <br>
+        <h1>Calyx: The Connection Cue </h1>
+        <p> A refined, tech-enhanced display that bridges the distance between you and your loved ones. Let Calyx be the foundation of your connected moments, bridging the digital and natural world seamlessly.</p>
+
+    <!-- Navigation Links -->
+    <section class="nav-buttons">
+        <a href="#concept-section">Concept Development</a>
+        <a href="#artifact-section">Final Artifact</a>
+        <a href="#video-section">Video Demo</a> 
+        <a href="#code-section">Code</a> 
+        <a href="#circuit-section">Circuit</a>
+    
+
+    </section>
+
+    <!-- Concept Development Section -->
+    <section id="concept-section" class="section">
+        <h2>Concept Development</h2>
+        <div class="concept-images">
+
+            <img src="images/Calyx/c1.JPG" alt="Concept Image 1" style="width: 500px; height: auto; padding-left: 40px;">
+
+            <img src="images/Calyx/c2.JPG" alt="Concept Image 2" style="width: 290px; height: auto;">
+            <br>
+        </div>
+    </section>
+
+    <!-- Final Artifact Section -->
+    <section id="artifact-section" class="section">
+        <h2>Final Artifact</h2>
+        <div class="final-images">
+            <img src="images/Calyx/f1.jpg" alt="Final Artifact Image 1">
+            <img src="images/Calyx/f2.jpg" alt="Final Artifact Image 2">
+            <img src="images/Calyx/f3.jpg" alt="Final Artifact Image 3">
+        </div>
+        <p>
+            <br>
+            <strong>Calyx: The Connection Cue</strong> is an interactive display designed to bridge the distance between you and your loved ones through visual and physical cues. This embodiment reacts to digital interactions by utilizing a servo-powered flower mechanism and LED indicators to reflect real-time communication updates, such as incoming and outgoing messages and online presence. The project uses a Python script integrated with Selenium to monitor WhatsApp Web activity and send signals to an Arduino, which then orchestrates movements and LED signals that represent various states of connection. The servo animates the bloom and subtle vibrations of the flower, while LEDs flash or remain lit to signify activity, creating an organic and emotional representation of digital connections.
+        </p>
+        <ul>
+            <li><strong>Features</strong>: Real-time communication cues, online/offline status representation, dynamic servo and LED responses</li>
+            <li><strong>Technology</strong>: Servo motor, LEDs, Arduino Pro Micro, Python with Selenium, USB power integration</li>
+            <li><strong>Interaction</strong>: Automated physical responses to online presence, unread messages, and outgoing texts</li>
+            <li><strong>Use Case</strong>: Enhances awareness of family communication across large distances with ambient, physical reminders</li>
+        </ul>
+    </section>
+
+    <!-- Video Demo -->
+    <section id="video-section">
+        <h2>Video Demo</h2>
+        <div class="media-container">
+            <iframe src="https://www.youtube.com/embed/dsg33Wu5oR8" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+            </iframe>
+        </div>
+    </section>
+    
+    <section id="code-section" class="section">
+        <h2>Project Code</h2>
+        <p>
+            The project consists of two main code files: a Python script and an Arduino INO file. The Python script uses Selenium to interact with WhatsApp Web and detect changes such as online status, unread messages, and new incoming messages from a specified contact. It sends signals to the Arduino through a serial connection, prompting different physical responses in the project embodiment. The Arduino INO file reads these signals to control servo movements and LED indicators, representing the changes in a tangible way.
+        </p>
+        <p>
+            Check out the code on <a href="https://github.com/ishitachandraa/Calyx.git" target="_blank">GitHub</a>.
+        </p>
+    </section>
+    
+
+    <!-- Circuit Section -->
+    <section id="circuit-section" class="section">
+        <h2>Circuit</h2>
+        <div class="circuit">
+            <img src="images/Calyx/circuit.JPG" alt="Circuit">
+        </div>
+        <br>
+    </section>
+
+    <!-- References -->
+    <footer>
+        <section id="references" class="section">
+            <h2>References</h2>
+            <p><a href="https://github.com/ar-nadeem/WhatsApp-Selenium.git" target="_blank">WhatsApp-Selenium</a> by ar-nadeem </p>
+            <p><a href="https://youtu.be/KMFYCu2otrk?si=kwVpdNRUs69kxYiO" target="_blank">How to Wire Multiple LEDs: Series vs. Parallel LED Circuits</a> by 
+                Rachel De Barros </p>
+            <p><a href="https://youtu.be/5Tt0xLZ7c-g?si=4dYVLqRKHTgpGCg2" target="_blank">Interactive Touch Flower Prototype (touch me not)</a> by ArtScience BLR</p>
+        </section>
+    </footer>
+
+    <!-- Scripts (optional) -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
