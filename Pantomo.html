@@ -46,7 +46,7 @@
         }
         
         .back-button:hover {
-            background-color: #a2bffe;
+            background-color: #FF7075;
             color: #fff !important;
         }
 
@@ -60,7 +60,7 @@
             font-size: 16px;
             text-decoration: none;
             color: #fff;
-            background-color: #6683a2;
+            background-color: #ff5a5f;
             padding: 10px 20px;
             margin: 0 10px;
             border-radius: 5px;
@@ -68,7 +68,7 @@
         }
 
         .nav-buttons a:hover {
-            background-color: #86a69f; 
+            background-color: #FF7075; 
             color: white !important;
         }
 
@@ -80,7 +80,6 @@
             margin-top: 20px;
             margin-bottom: 50px;
         }
-
         .carousel-container {
             text-align: center;
             max-width: 800px;
@@ -88,44 +87,39 @@
             position: relative; /* For positioning arrows */
         }
 
-        
-
         .carousel-img {
             width: 100%;
-            height: 500px; /* Increased height for more space */
-            object-fit: contain; /* Maintains aspect ratio and centers smaller images */
+            height: 500px;
+            object-fit: contain;
             border-radius: 10px;
         }
 
-
-
-
-
         .carousel-description {
-            margin-top: 15px;
+            margin-top: 5px;
             font-size: 16px;
         }
 
         .carousel-controls {
             position: absolute;
-            top: 50%; /* Center vertically */
-            transform: translateY(-50%); /* Center vertically */
-            width: 100%;
+            top: 50%;
+            transform: translateY(-50%);
             display: flex;
-            justify-content: space-between; /* Space between arrows */
+            justify-content: space-between;
+            width: 100%;
+            z-index: 100; /* Ensure it's above other elements */
+            pointer-events: none; /* Allow interactions to pass through */
         }
 
         .carousel-controls button {
-    background: none !important; /* No background */
-    border: 2px solid white !important; /* White border */
-    padding: 0 !important; /* No padding */
-    cursor: pointer !important; /* Pointer on hover */
-}
-
-
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            pointer-events: all; /* Ensure the buttons can be clicked */
+        }
 
         .carousel-controls img {
-            width: 30px; /* Adjust the size of the arrow images */
+            width: 30px;
             height: auto;
         }
 
@@ -235,8 +229,7 @@
     <section id="description-section" class="section">
         <h2>Description</h2>
         <p style="font-size: 18px; line-height: 1.6; margin: 20px 0;">
-            Pantomo is an innovative interface designed to elevate the experience of playing charades by automating team management, scoring, and timers, while tracking fun player statistics over multiple game sessions seamlessly.
-            <br><br>
+            Pantomo is an innovative interface designed to elevate the experience of playing charades by automating team management, scoring, and timers, while tracking fun player statistics over multiple game sessions seamlessly. The name "Pantomo" is derived from pantomime, a form of theatre that involves miming and slapstick comedy, particularly popular during Christmas. This connection highlights the playful, expressive nature of the game and the lively atmosphere that Pantomo aims to create.            <br><br>
             <b>Problem:</b> Classic party games like charades often come in card format and require manual setup for teams, scoring, and timekeeping, which can be cumbersome and distract from the fun. Furthermore, tracking such data across multiple teams is more work than anyone would be willing to do.
 <br>
             <br>
@@ -247,7 +240,7 @@
             Pantomo bridges the gap between the digital and physical worlds without being intrusive or demanding much from the users. It seamlessly integrates technology with traditional game elements—letting you still use the prompt cards for that authentic feel. It uses proxemic interactions, such as walking closer to the prompt pile and various gestures, to facilitate round management and timers without having to touch the screen. At the same time, it tracks all team and individual achievements, ensuring a comprehensive and enjoyable gameplay experience!            <br><br>
             As someone who loves hosting game nights, charades has always been an all-time favorite. The desire for competitiveness, paired with the joy of knowing who the ultimate charade champion is, inspired this project. I wanted to create an experience where everyone could get lost in the laughter and energy of the game, without worrying about the technicalities of scorekeeping or team organization. The idea was to blend the simplicity of traditional gameplay with a touch of modern convenience, making game nights more engaging and memorable for everyone involved.
 
-            <br><br> <a href="https://short-tattered-ridge.glitch.me/" target="_blank">Live Site</a>
+            <br><br> <a href="https://pantomo.glitch.me/" target="_blank">Live Site</a>
         </p>
     </section>
     
@@ -255,18 +248,16 @@
     <!-- Concept Sketches Section with Carousel -->
     <section id="concept-section" class="section">
         <h2>Concept Sketches</h2>
-        <p style="font-size: 18px; line-height: 1.6; margin: 20px 0;">Creating concept sketches while incorporating proxemic interactions was a new challenge for me, as it wasn't something I had ever worked with before. Brainstorming how the physical space between players and the system could be leveraged for seamless interaction was both thought-provoking and exciting. This process allowed me to think beyond the standard user interface, and brought a new world of almost 'magical' interactions. These are some fun ideas that I experimented with :-</p>
+        <p style="font-size: 18px; line-height: 1.6; margin: 20px 0;">
+            Creating concept sketches while incorporating proxemic interactions was a new challenge for me, as it wasn't something I had ever worked with before. Brainstorming how the physical space between players and the system could be leveraged for seamless interaction was both thought-provoking and exciting. This process allowed me to think beyond the standard user interface, and brought a new world of almost 'magical' interactions. These are some fun ideas that I experimented with :-        </p>
 
-      
-        
         <div class="carousel-container">
             <!-- Image Carousel -->
-            <img id="carousel-image" class="carousel-img" src="images/Pantomo/c1.jpeg" alt="Concept Sketch 3">
-            <!-- Description -->
+            <img id="carousel-image" class="carousel-img" src="images/Pantomo/c1.jpeg" alt="Concept Sketch 1">
             <div id="carousel-description" class="carousel-description">
-            <p> a stationary display behind plants showcasing current health status and urgent needs from a distance. On coming closer, it gives detailed insights about the issue as well as past watering records.</p>
+                <p>a stationary display behind plants showcasing current health status and urgent needs from a distance. On coming closer, it gives detailed insights about the issue as well as past watering records.</p>
+            </div>
             <!-- Carousel Controls -->
-            <br>
             <div class="carousel-controls">
                 <button onclick="prevImage()" aria-label="Previous">
                     <img src="images/SubDecisions/arrowLeft.png" alt="Previous">
@@ -276,15 +267,13 @@
                 </button>
             </div>
         </div>
-        
     </section>
 
-<!-- Refined Sketches Section with Carousel -->
-<!-- Refined Sketches Section with Carousel -->
+
 <!-- Refined Sketches Section with Carousel -->
 <section id="refined-section" class="section">
     <h2>Storyboard</h2>
-    <p>The following storyboards portray the different proxemic interactions in this project.</p>
+    <p style="font-size: 18px; line-height: 1.6; margin: 20px 0;">Since I decided to go with the last concept sketch of a game night manager, I really started deliberating on the proxemic interactions I wanted. The main aim was to let players engage in the game as they normally would while leveraging their natural movements and positions to facilitate seamless gameplay. These are the interactions I ended up implementing:</p>
 
     <div class="carousel2-container">
         <!-- Image Carousel -->
@@ -293,7 +282,7 @@
         </div>
         <!-- Description -->
         <div id="refined-carousel2-description" class="carousel2-description">
-            <p>This interaction demonstrates the simplicity of team creation within the interface. Users just need to click the "Add New Team" button, which activates the front camera and starts a countdown. Everyone within the frame is automatically added to the newly created team, making setup quick and effortless.</p>
+            <p>This interaction demonstrates the simplicity of team creation within the interface. Users click the "Add New Team" button, which activates the front camera and starts a countdown. Everyone within the frame is automatically added to the new team, making setup quick and effortless. Since teams typically sit together, this interaction feels natural. Plus, sharing a photobooth moment with randomly assigned, funny team names is sure to boost team spirit.</p>
         </div>
         <!-- Carousel Controls -->
         <div class="carousel2-controls">
@@ -311,7 +300,7 @@
 <!-- JavaScript for the Refined Sketches Carousel -->
 <script>
     const refinedImages = [
-        { src: "images/Pantomo/s1.jpeg", description: "This interaction shows how easy team creation is in this interface. Users simply click on Add New Team button, which opens up the front camera with a countdown. All users inside the frame are then automatically added to the new team created." },
+        { src: "images/Pantomo/s1.jpeg", description: "This interaction demonstrates the simplicity of team creation within the interface. Users click the 'Add New Team' button, which activates the front camera and starts a countdown. Everyone within the frame is automatically added to the new team, making setup quick and effortless. Since teams typically sit together, this interaction feels natural. Plus, sharing a photobooth moment with randomly assigned, funny team names is sure to boost team spirit." },
         { src: "images/Pantomo/s1.jpeg", description: "2ton, which opens up the front camera with a countdown. All users inside the frame are then automatically added to the new team created." },
         ];
 
@@ -401,7 +390,7 @@
     <section id="code-section" class="section">
         <h2>Source Code</h2>
         <p> This is the link to my Glitch project. <br>
-            <a href="https://glitch.com/edit/#!/short-tattered-ridge?path=README.md%3A1%3A0" target="_blank">Glitch</a></p>
+            <a href="https://glitch.com/edit/#!/pantomo" target="_blank">Glitch</a></p>
     </section>
 
     <!-- Footer --> 
@@ -410,34 +399,43 @@
     <!-- JavaScript for the Carousel -->
     <script>
         const images = [
-            { src: "images/Pantomo/c1.jpeg", description: "a stationary display behind plants showcasing current staus and urgent needs from a distance. On coming closer, it gives detailed insights about plant health and water/sunlight history." },
-            { src: "images/TiltedSkies/5.JPG", description: "A maze game powered by the device’s accelerometer and gyroscope, where the only way to win is to reach the finish spot by thinking outside the box—and beyond the screen." },
-            { src: "images/TiltedSkies/9.jpeg", description: "A virtual pet and harp experience where you gently play by swaying the phone to soothe the pet. But to unlock the phone, you must bang on the harp like a drum set and hype up the pet instead." },
-            { src: "images/TiltedSkies/6.JPG", description: "A ball drop game where, instead of aiming for the basket below, you flip your phone to hit a hidden cloud and unlock the phone." },
-            { src: "images/TiltedSkies/7.JPG", description: "A mini golf simulation where the target is not what it seems to be." },
-            { src: "images/TiltedSkies/8.JPG", description: "A whack-a-mole game where hitting only the good moles is the secret to unlocking the phone." },
-            { src: "images/TiltedSkies/10.jpeg", description: "A lemonade stand game where the key is adding unusual, non-lemonade ingredients to the pitcher." },
-            { src: "images/TiltedSkies/4.JPG", description: "A crossroad game where the user must deliberately crash into a Secret vehicle to unlock the phone." },
-
-        ];
+            { src: "images/Pantomo/c1.jpeg", description: "a stationary display behind plants showcasing current health status and urgent needs from a distance. On coming closer, it gives detailed insights about the issue as well as past watering records." },
+            { src: "images/Pantomo/c2.JPG", description: "An interface designed for multi-user interaction, where for a single user, it tracks personal preferences and suggests movies based on past likes and dislikes. For multiple users, it identifies shared interests to recommend films with the most common ground." },
+            { src: "images/Pantomo/c3.JPG", description: "A camera interface designed for seamless group photos, ensuring that the picture is only taken when all faces are visible and everyone’s eyes are open for the perfect shot." },
+            { src: "images/Pantomo/c4.JPG", description: "A smart fridge display that suggests recipes based on available ingredients from a distance. Upon approaching, it provides a detailed inventory of items and generates a shopping list for replenishments" },
+            { src: "images/Pantomo/c5.JPG", description: "A study buddy interface that helps maintain focus by using a study timer that pauses when it detects eyes off the screen for extended periods. It tracks phone pickups and triggers alarms if phone usage exceeds a set threshold." },
+            { src: "images/Pantomo/c6.JPG", description: "A team task manager interface that displays everyone's daily progress from a distance. When a user comes closer, it identifies them and shows their detailed tasks with additional options like editing tasks or requesting assistance." },
+            { src: "images/Pantomo/c7.JPG", description: "A home workout smart mirror that displays progress and motivational quotes from a distance to get you pumped. During workouts in the main zone, it monitors posture and tracks reps, while in the neutral zone between sets, it shows workout stats and achievements to keep you informed and motivated." },
+            { src: "images/Pantomo/c8.JPG", description: "An event board that displays a basic schedule with event titles, times, and locations from a distance. When approached, it becomes interactive and reveals detailed event information for a more comprehensive experience." },
+            { src: "images/Pantomo/c9.JPG", description: "An interface that maintains the current application for individual use but discreetly transitions to a pre-set, neutral application upon detecting another user in proximity, providing an added layer of privacy." },
+            { src: "images/Pantomo/c10.JPG", description: "A game night manager that automatically starts the timer when a player steps into the 'spotlight' after reading their cue card. It also tracks scores and rounds to streamline gameplay and enhance the overall experience." }
+            ];
 
         let currentImageIndex = 0;
 
-        function showImage(index) {
-            const image = images[index];
-            document.getElementById('carousel-image').src = image.src;
-            document.getElementById('carousel-description').textContent = image.description;
-        }
 
-        function prevImage() {
-            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
-            showImage(currentImageIndex);
-        }
 
-        function nextImage() {
-            currentImageIndex = (currentImageIndex + 1) % images.length;
-            showImage(currentImageIndex);
-        }
+function showImage(index) {
+    const image = images[index];
+    if (image) {
+        document.getElementById('carousel-image').src = image.src;
+        document.getElementById('carousel-description').textContent = image.description;
+    }
+}
+
+function prevImage() {
+    currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+    showImage(currentImageIndex);
+}
+
+function nextImage() {
+    currentImageIndex = (currentImageIndex + 1) % images.length;
+    showImage(currentImageIndex);
+}
+
+// Initialize with the first image
+showImage(currentImageIndex);
+
     </script>
 </body>
 </html>
