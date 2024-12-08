@@ -134,6 +134,7 @@
     <!-- Navigation Links -->
     <section class="nav-buttons">
         <a href="#concept-section">Concept Development</a>
+        <a href="#development-section">Tangible Construction</a>
         <a href="#artifact-section">Final Artifact</a>
         <a href="#video-section">Video Demo</a> 
         <a href="#code-section">Code</a> 
@@ -154,7 +155,26 @@
             <br>
         </div>
     </section>
+    <section id="development-section" class="section">
+        <h2>Tangible Construction</h2>
+        <!-- GIF -->
+        <div class="media-container">
+            <img src="images/Obscura/dev.gif" alt="Development Process GIF" style="width: 450px; height: auto;">
+        </div>
+        <!-- Text Description -->
+        <p><br> The development process for Obscura began with building and testing the circuit. After ensuring the components worked as intended, I soldered specific wires to extend their length for easier integration into the design. </p> <p> To make the 3D-printed box for the bubble mechanism waterproof, I painted it with nail polish. The bubble disk was securely glued to the DC motor, which was then mounted onto the lid of the box. Another DC motor with a fan attachment was hot-glued in place to blow the bubbles effectively. </p> <p> This entire system was carefully positioned on top of the hat, with the breadboard glued to the side for accessibility and the touch sensor mounted on the brim for easy activation. To achieve a clean and cohesive look, I covered the setup with a cut-up black balaclava from Dollarama, which concealed the components while maintaining the hat’s traditional aesthetic. </p> <p> For the finishing touches, I added a ribbon around the hat and incorporated fairy lights to enhance the magical appearance, ensuring that Obscura not only performed its tricks but also looked like an innocent traditional magic hat the audience. </p>
+        <!-- STL Files -->
+        <h3>3D Print Files</h3>
 
+
+
+<p> The 3D-printed box and lid used in the bubble mechanism were custom-designed by me to fit my specific needs. The bubble disk design, however, was adapted from <a href="https://www.instructables.com/How-to-Make-Bubble-Blower-Machine-in-a-Very-Simple/" target="_blank">this Instructables project</a>, which provided a simple and effective solution for creating continuous bubbles. </p>
+        <ul>
+            <li><a href="images/Obscura/box.stl" download>Box.stl</a></li>
+            <li><a href="images/Obscura/lid.stl" download>Lid.stl</a></li>
+            <li><a href="images/Obscura/cd.stl" download>BubbleDisk.stl</a></li>
+        </ul>
+    </section>
     <!-- Final Artifact Section -->
     <section id="artifact-section" class="section">
         <h2>Final Artifact</h2>
@@ -198,13 +218,57 @@
     
 
     <!-- Circuit Section -->
-    <section id="circuit-section" class="section">
-        <h2>Circuit</h2>
-        <div class="circuit">
-            <img src="images/Calyx/circuit.JPG" alt="Circuit">
-        </div>
-        <br>
-    </section>
+<!-- Circuit Section -->
+<section id="circuit-section" class="section">
+    <h2>Circuit</h2>
+    <!-- Tab Buttons -->
+    <div class="nav-buttons">
+        <a href="#!" onclick="showTab('Schematic View')">Schematic View</a>
+        <a href="#!" onclick="showTab('Illustrated View')">Illustrated View</a>
+        <a href="#!" onclick="showTab('Breadboard Setup')">Breadboard Setup</a>
+    </div>
+
+    <!-- Tab Content -->
+    <div class="circuit">
+        <img id="circuit1" src="images/Obscura/circuit1.png" alt="Circuit 1" style="display: none;">
+        <img id="circuit2" src="images/Obscura/circuit2.png" alt="Circuit 2" style="display: none;">
+        <img id="circuit3" src="images/Obscura/circuit3.png" alt="Circuit 3" style="display: none;">
+    </div>
+</section>
+
+<script>
+    // Mapping tab names to image IDs
+    const tabMapping = {
+        "Schematic View": "circuit1",
+        "Illustrated View": "circuit2",
+        "Breadboard Setup": "circuit3"
+    };
+
+    // JavaScript function to handle tab switching
+    function showTab(tabName) {
+        // Hide all circuit images
+        document.querySelectorAll('.circuit img').forEach((img) => {
+            img.style.display = 'none';
+        });
+
+        // Find the corresponding image ID using the tab mapping
+        const tabId = tabMapping[tabName];
+        if (tabId) {
+            const selectedTab = document.getElementById(tabId);
+            if (selectedTab) {
+                selectedTab.style.display = 'block';
+            }
+        }
+    }
+
+    // Show the first tab by default
+    window.onload = () => {
+        showTab('Schematic View');
+    };
+</script>
+
+
+
 
     <!-- References -->
     <footer>
