@@ -259,7 +259,7 @@
         <p style="font-size: 18px; line-height: 1.6; margin: 20px 0;">
             To kick off the ideation process, I began by discussing with my team and introspecting to identify everyday problems—whether big or small—that we encounter in our routines. "Everything" can be an everyday problem for someone, but we aimed to bring forward an idea that the majority of people around us could relate to and benefit from.
         <br><br>
-        From this foundation, we brainstormed potential solutions for the problems we identified, making a conscious effort not to limit ourselves creatively. We encouraged open-mindedness and imagination to ensure our ideas were innovative and impactful.
+        Building on this foundation, we brainstormed potential solutions to the identified problems, consciously avoiding creative limitations. We encouraged open-mindedness and imagination to ensure our ideas were innovative and impactful.
 
 These are the concepts we came up with during our exploration of everyday challenges and potential solutions.
            <br> <div class="carousel-container">
@@ -394,10 +394,10 @@ These are the concepts we came up with during our exploration of everyday challe
                 <h3>Challenged We Faced</h3>
                 
                 <ul style="font-size: 18px; line-height: 1.6;">
-                    <li>It was difficult to find the perfect threshold for distance sensing. The book cover on our table repeatedy triggered the sensor<br>
-                    Solution: We propped the sensor up using the base of a candle holder. We also put a range as the threshold instead of a single number and tested multiple times to ensure smooth interaction.</li>
-                    <li>The 'smacking' stick hit glued on top of the motor kept falling off after colliding with user.<br>
-                    Solution: We 3D printed a connecter between motor and stick to ensure that it stayed in position.</li>
+                    <li>It was difficult to find the optimal threshold for distance sensing, as the book cover on the table and the desk chair frequently triggered the sensor.<br>
+                        Solution: We elevated the sensor using the base of a candle holder to improve its positioning. Additionally, we set a range for the threshold instead of relying on a single value and conducted multiple tests to ensure smooth and reliable interactions.</li>
+                    <li>The 'smacking' stick, which was initially glued to the motor, repeatedly fell off after colliding with the user.<br>
+                        Solution: We designed and 3D-printed a custom connector to securely attach the stick to the motor, ensuring it remained firmly in position during use.</li>
                 </ul>
                 
             </div>
@@ -407,9 +407,10 @@ These are the concepts we came up with during our exploration of everyday challe
                 <div style="flex: 1; padding: 30px; border: 1px solid #ddd; border-radius: 5px;">
                     <h3>Future Improvement Ideas</h3>
                     <ul style="font-size: 18px; line-height: 1.6;">
-                        <li>This desk has the potential to work in numerous other scenarios, instead of book reading and studying. Making a generalised version, or even multiple other specific versions would be interesting and useful.</li>
-                        <li>The interface could recognise different user, and set study timers, light color and intensity and other adjustments according to their saved preferences.</li>
-                        <li>The features can be extended to include ambient sounds, posture detecting, and a candy award system when task marked as complete.</li>
+                        <li>This desk concept has the potential to be adapted for a variety of other scenarios beyond book reading and studying. Developing a generalized version or creating multiple specialized versions tailored to different needs would open up exciting and practical possibilities for broader applications.</li>
+                        <li>The interface could be designed to recognize different users and automatically adjust settings such as study timers, light color, intensity, and other preferences based on their saved profiles.</li>
+                        <li>
+                            The features could be expanded to include ambient sound options for enhanced focus, posture detection to promote ergonomic habits, and a rewarding candy dispensing system triggered when a task is marked as complete.</li>
                     </ul>
                 </div>
                 
@@ -419,9 +420,114 @@ These are the concepts we came up with during our exploration of everyday challe
     <!-- Source Code Section -->
     <section id="code-section" class="section">
         <h2>Source Code</h2>
-        <p> This is the link to our Github Repo. <br>
-            <a href="https://glitch.com/edit/#!/DeskSense" target="_blank">GitHub</a></p>
+        <p>You can explore the mobile interface here: <a href="https://table-top-accessory-timer.glitch.me/" target="_blank">Mobile Interface</a></p>
+        <pre><code>
+    #include &lt;Servo.h&gt;
+    
+    // Define pins
+    const int trigPin = 12;
+    const int echoPin = 13;
+    const int ledPin = 7;
+    const int servoPin = 11; // Servo
+    const int basherServoPin = 9;
+    
+    // Create servo object
+    Servo myServo;
+    Servo basherServo;
+    
+    // Constants
+    const int proximityThreshold = 90; // Distance threshold in centimeters
+    const int lightThreshold = 50;
+    
+    // Variables
+    bool servoMoved = false; // Flag to track if the servo has already moved
+    int bookCloseDamper = 0; // timeout so that book doesn't close immediately
+    int smackDamper = 0; // same as above but for smacker
+    
+    void setup() {
+      // Initialize pins
+      pinMode(trigPin, OUTPUT);
+      pinMode(echoPin, INPUT);
+      pinMode(ledPin, OUTPUT);
+    
+      // Attach servo
+      myServo.attach(servoPin);
+      basherServo.attach(basherServoPin);
+    
+      // Start with servo at 180 degrees
+      myServo.write(180);
+      basherServo.write(180);
+    
+      // Initialize Serial for debugging
+      Serial.begin(9600);
+    }
+    
+    void loop() {
+      // Measure distance
+      long distance = getDistance();
+    
+      // Measure light sensor
+      int lightValue = analogRead(A0);
+    
+      // Print distance to Serial Monitor
+      Serial.print("Distance: ");
+      Serial.println(distance);
+    
+      // Print light to Serial Monitor
+      Serial.print("Light: ");
+      Serial.println(lightValue);
+    
+      // Check if the distance is below the threshold
+      if (distance <= proximityThreshold) {
+        bookCloseDamper = 0;
+        // Turn on LED
+        digitalWrite(ledPin, HIGH);
+    
+        myServo.write(30);
+    
+        // Move servo to 0 degrees once
+        // if (!servoMoved) {
+        //   myServo.write(0);
+        //   servoMoved = true; // Ensure servo moves only once
+      
+        // }
+      } else {
+        bookCloseDamper += 1;
+        // Turn off LED
+        digitalWrite(ledPin, LOW);
+        if(bookCloseDamper > 45) myServo.write(180);
+      }
+    
+      if (lightValue > lightThreshold) {
+        smackDamper = 0;
+        basherServo.write(180);
+      }else{
+        smackDamper += 1;
+        if(smackDamper > 40) basherServo.write(90);
+      }
+    
+      // Small delay to avoid flooding the Serial Monitor
+      delay(100);
+    }
+    
+    // Function to get distance from the ultrasonic sensor
+    long getDistance() {
+      // Send a 10-microsecond pulse to the trigger pin
+      digitalWrite(trigPin, LOW);
+      delayMicroseconds(2);
+      digitalWrite(trigPin, HIGH);
+      delayMicroseconds(10);
+      digitalWrite(trigPin, LOW);
+    
+      // Read the echo pin and calculate distance
+      long duration = pulseIn(echoPin, HIGH);
+      long distance = duration * 0.034 / 2; // Convert to centimeters
+    
+      return distance;
+    }
+        </code></pre>
     </section>
+    
 
     <!-- Footer --> 
     
